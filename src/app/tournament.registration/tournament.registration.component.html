@@ -1,0 +1,12 @@
+<form (ngSubmit)="onRegistration()" #form="ngForm">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input class="form-control" ngModel id="name" name="name" placerholder="name" type="text" required>
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input class="form-control" ngModel id="password" name="password" type="password" required pattern="^[a-zA-Zd]{4,}$">
+  </div>
+  <hr>
+  <button class="btn btn-secondary btn-sm" type="submit" [disabled]="!form.valid">Register Tournament</button>
+</form>

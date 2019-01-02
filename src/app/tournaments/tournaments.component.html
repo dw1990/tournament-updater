@@ -1,0 +1,23 @@
+<input type="text" [(ngModel)]="currentFilter">
+<div *ngIf="tournaments == null" class="d-flex justify-content-center">
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+<div class="list-group">
+  <button type="button" *ngFor="let tournament of tournaments | name:currentFilter" class="list-group-item list-group-item-action tournament"
+    (click)="selectTournament(tournament)">
+    <div class="row">
+      <div class="col">{{tournament.name}}</div>
+      <div class="col">
+        <button (click)="onDeleteTournament(tournament.id)" class="btn btn-danger btn-sm m-2">Delete</button>
+      </div>
+    </div>
+  </button>
+</div>
+<app-tournament-registration></app-tournament-registration>
+<div class="col">
+
+  <h3 *ngIf="!selectedTournament">No tournament selected yet</h3>
+  <app-tournament *ngIf="selectedTournament" [tournament]="selectedTournament"></app-tournament>
+</div>
